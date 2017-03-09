@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.mridul.nisb.AboutActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:text="About IEEE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_marginTop="20dip" />
+
+            <TextView
+                android:text="The Institute of Electrical and Electronics Engineers is a professional association.It was formed in 1963 from the amalgamation of the American Institute of Electrical Engineers and the Institute of Radio Engineers. Today, it is the world's largest association of technical professionals with more than 400,000 members in chapters around the world. Its objectives are the educational and technical advancement of electrical and electronic engineering, telecommunications, computer engineering and allied disciplines. The core purpose of IEEE is to foster technological innovation and excellence for the benefit of humanity.The Institute of Electrical and Electronics Engineers sponsors more than 1,600 annual conferences and meetings worldwide. IEEE is also highly involved in the technical program development of numerous events including trade events, training workshops, job fairs, and other programs."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:padding="20dip"
+                android:layout_marginBottom="5dip"
+                android:textAlignment="center" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                app:srcCompat="@drawable/ieee"
+                android:id="@+id/imageView1" />
+
+
+            <TextView
+                android:text="Region 10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_marginTop="20dip" />
+
+            <TextView
+                android:text="The IEEE Region 10, also sometimes referred as the Asia Pacific Region, comprises of 57 Sections, 6 Councils, 17 Sub­sections, 515 Chapters, 60 Affinity Groups and 958 Student Branches. It covers a geographical area stretching from South Korea and Japan in the north­east to New Zealand in the south, and Pakistan in the west. With a membership of 107,154, it is one of the largest regions in IEEE. In order to fulfill IEEE’s mission of advancing the theory and practice of electrical, electronics, communications and computer engineering, as well as computer science and related areas, Region 10 activities are directed to developing and maintaining regional entities for the best interests and benefits of the IEEE members in the region. TENCON is a premier international technical conference of IEEE Region 10."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:padding="20dip"
+                android:layout_marginBottom="5dip"
+                android:textAlignment="center" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                app:srcCompat="@drawable/region10"
+                android:id="@+id/imageView2" />
+
+            <TextView
+                android:text="IEEE Bangalore Section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_marginTop="20dip" />
+
+            <TextView
+                android:text="IEEE Banglaore section is one of the most prestigious sections n India known for conducting a wide range of events and workshops. IEEE Bangalore Section is recognised as an Outstanding Section for Membership Recruitment and Retention Performance – 2016. It has 14 Society Chapters and two affinity groups.The Chapters carry out focused activities in the respective area by way of conducting technical talks under DLT, Seminars, Tutorials, workshops etc. Apart from the Chapters two affinity groups viz. the Graduate of the Last Decade (GOLD) and Women In Engineering (WIE) also carry out related activities. IEEE Bangalore and IEEE Princeton and Central New Jersey Sections had signed a MoU as sister sections.There are about 53 Student Branches in Karnataka in the various graduate and post­graduate engineering colleges and these units conduct technical talks, TechFests etc. A dedicated Student Paper contest, Technical Colloquium and Student Leadership Workshop are some of the major events conducted under Student activities of the Section."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7"
+                android:padding="20dip"
+                android:layout_marginBottom="5dip"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="NISB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_marginTop="20dip" />
+
+            <TextView
+                android:text="NISB is the IEEE student branch of National Institue of Engineering. It is one of the largest and most active student branches of Karnataka.Having been active for a decade, we have been honoured and humbled with numerous awards and accolades over time, including 'The Best Student Chapter' of Region 10­ Bangalore. We organize and host a wide range of technical workshops and events. We have our odd sem fest ADROIT and even sem fest ANKURA. Electronika , IPL are few our signature events."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9"
+                android:padding="20dip"
+                android:layout_marginBottom="5dip"
+                android:textAlignment="center" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/nisb"
+                android:id="@+id/imageView3"
+                android:layout_marginBottom="40dip"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

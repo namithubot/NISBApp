@@ -1,4 +1,4 @@
-package in.nisb.nisbapp;
+package com.example.mridul.nisb;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("in.nisb.nisbapp", appContext.getPackageName());
+        assertEquals("com.example.mridul.nisb", appContext.getPackageName());
     }
 }

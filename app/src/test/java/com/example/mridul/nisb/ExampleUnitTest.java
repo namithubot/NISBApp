@@ -1,4 +1,4 @@
-package in.nisb.nisbapp;
+package com.example.mridul.nisb;
 
 import org.junit.Test;
 
