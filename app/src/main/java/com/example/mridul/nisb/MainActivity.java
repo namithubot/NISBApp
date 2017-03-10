@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //update user's device info to the realtime db
     public void setUserToken(String token){
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         return "";
     }
 
-    //Guest Logout
+    //Logout
     public void logout(){
         NisbUser.doGuestLogout(getApplicationContext());
         NisbUser.doUserLogout(getApplicationContext());
@@ -120,15 +121,15 @@ public class MainActivity extends AppCompatActivity {
         t.addTab(spec1);
 
 
-        TabHost.TabSpec spec3 = t.newTabSpec("Team");
-        spec3.setIndicator("Team");
-        spec3.setContent(R.id.tab_team);
-        t.addTab(spec3);
-
-        TabHost.TabSpec spec4 = t.newTabSpec("Gallery");
-        spec4.setIndicator("Gallery");
-        spec4.setContent(R.id.tab_gallery);
-        t.addTab(spec4);
+//        TabHost.TabSpec spec3 = t.newTabSpec("Team");
+//        spec3.setIndicator("Team");
+//        spec3.setContent(R.id.tab_team);
+//        t.addTab(spec3);
+//
+//        TabHost.TabSpec spec4 = t.newTabSpec("Gallery");
+//        spec4.setIndicator("Gallery");
+//        spec4.setContent(R.id.tab_gallery);
+//        t.addTab(spec4);
 
         TabHost.TabSpec spec5 = t.newTabSpec("Events");
         spec5.setIndicator("Events");
@@ -140,25 +141,25 @@ public class MainActivity extends AppCompatActivity {
         spec6.setContent(R.id.tab_blog);
         t.addTab(spec6);
 
-        TabHost.TabSpec spec7 = t.newTabSpec("Roadmap");
-        spec7.setIndicator("Roadmap");
-        spec7.setContent(R.id.tab_roadmap);
-        t.addTab(spec7);
-
-        TabHost.TabSpec spec8 = t.newTabSpec("wie");
-        spec8.setIndicator("Women in Engineering");
-        spec8.setContent(R.id.tab_wie);
-        t.addTab(spec8);
-
-        TabHost.TabSpec spec9 = t.newTabSpec("cs");
-        spec9.setIndicator("Computer Society");
-        spec9.setContent(R.id.tab_cs);
-        t.addTab(spec9);
-
-        TabHost.TabSpec spec10 = t.newTabSpec("fg");
-        spec10.setIndicator("Focus Group");
-        spec10.setContent(R.id.tab_fg);
-        t.addTab(spec10);
+//        TabHost.TabSpec spec7 = t.newTabSpec("Roadmap");
+//        spec7.setIndicator("Roadmap");
+//        spec7.setContent(R.id.tab_roadmap);
+//        t.addTab(spec7);
+//
+//        TabHost.TabSpec spec8 = t.newTabSpec("wie");
+//        spec8.setIndicator("Women in Engineering");
+//        spec8.setContent(R.id.tab_wie);
+//        t.addTab(spec8);
+//
+//        TabHost.TabSpec spec9 = t.newTabSpec("cs");
+//        spec9.setIndicator("Computer Society");
+//        spec9.setContent(R.id.tab_cs);
+//        t.addTab(spec9);
+//
+//        TabHost.TabSpec spec10 = t.newTabSpec("fg");
+//        spec10.setIndicator("Focus Group");
+//        spec10.setContent(R.id.tab_fg);
+//        t.addTab(spec10);
 
 
         t.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
