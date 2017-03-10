@@ -1,5 +1,7 @@
 package com.example.mridul.nisb;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +13,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,9 +24,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.regex.Pattern;
+
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$", Pattern.CASE_INSENSITIVE);
+    AutoCompleteTextView emailTV;
     private FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
             Intent i = new Intent(LoginActivity.this,MainActivity.class);
             startActivity(i);
         }
+
+        emailTV = (AutoCompleteTextView) findViewById(R.id.email);
+        addEmailAutoComplete();
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -63,6 +77,19 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void addEmailAutoComplete() {
+
+        Account[] accounts = AccountManager.get(this).getAccounts();
+        Set<String> emailSet = new HashSet<String>();
+        for (Account account : accounts) {
+            if (EMAIL_PATTERN.matcher(account.name).matches()) {
+                emailSet.add(account.name);
+            }
+        }
+        emailTV.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>(emailSet)));
+
     }
 
     public void loginUser(String email,String password){
