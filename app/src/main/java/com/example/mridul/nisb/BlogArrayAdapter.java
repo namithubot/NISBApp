@@ -13,13 +13,15 @@ package com.example.mridul.nisb;
         import android.widget.ArrayAdapter;
         import android.widget.TextView;
 
+        import org.json.JSONException;
+        import org.json.JSONObject;
         import org.w3c.dom.Text;
 
-public class BlogArrayAdapter extends ArrayAdapter<String>{
+public class BlogArrayAdapter extends ArrayAdapter<JSONObject>{
     private final Context context;
-    private final String[] values;
+    private final JSONObject[] values;
 
-    public BlogArrayAdapter(Context context, String[] values) {
+    public BlogArrayAdapter(Context context, JSONObject[] values) {
         super(context, R.layout.adapter_blog_item, values);
         this.context = context;
         this.values = values;
@@ -35,12 +37,21 @@ public class BlogArrayAdapter extends ArrayAdapter<String>{
         TextView Extra = (TextView) convertView.findViewById(R.id.extra);
         TextView Blog_url = (TextView) convertView.findViewById(R.id.url);
 
-        String data = values[position];
-        String data_list[] = data.split(",");
+        try{
+            JSONObject one = values[position];
+            String date = one.getString("pubDate");
+            String author = one.getString("author");
+            String title = one.getString("title");
+            String content = one.getString("content");
 
-        Title.setText(data_list[0]);
-        Extra.setText(data_list[1] + " , " + data_list[2]);
-        Blog_url.setText(data_list[3]);
+            Title.setText(title);
+            Extra.setText(author + " , " + date);
+            Blog_url.setText(content);
+
+        }catch (JSONException j){
+
+        }
+
         //0 - Blog Title
         //1 - Author
         //2 - Date

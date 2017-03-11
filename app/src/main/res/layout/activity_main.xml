@@ -70,14 +70,6 @@
 
                 </LinearLayout>
 
-                <include
-                    android:id="@+id/tab_team"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    layout="@layout/activity_team">
-
-                </include>
-
 
                 <LinearLayout
                     android:id="@+id/tab_gallery"

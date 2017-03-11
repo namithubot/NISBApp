@@ -4,6 +4,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -27,6 +29,11 @@ public class MessageService extends FirebaseMessagingService {
         notify.setContentText(remoteMessage.getNotification().getBody());
         notify.setAutoCancel(true);
         notify.setSmallIcon(R.drawable.nisb);
+
+        Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                R.drawable.nisb);
+
+        notify.setLargeIcon(icon);
 
         notify.setContentIntent(p);
 

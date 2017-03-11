@@ -32,6 +32,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.math.BigInteger;
 import java.nio.charset.Charset;
@@ -173,23 +174,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Load and Handle Click events
-    public void loadBlogPosts(String[] Blogs){
+    public void loadBlogPosts(JSONObject[] Blogs){
 
         ListView main_list = (ListView) findViewById(R.id.blog_list);
         main_list.setAdapter(new BlogArrayAdapter(this,Blogs));
-
-
 
 
         main_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView tu = (TextView) view.findViewById(R.id.url);
-                Toast t = Toast.makeText(getApplicationContext(),tu.getText(),Toast.LENGTH_SHORT);
-                t.show();
+                TextView tt = (TextView) view.findViewById(R.id.title);
 
                 Intent i=new Intent(getApplicationContext(),BlogSingleActivity.class);
-                i.putExtra("link", tu.getText());
+                i.putExtra("title", tt.getText());
+                i.putExtra("content",tu.getText());
                 startActivityForResult(i,1);
             }
         });
@@ -199,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
     public String retriveBlogs(){
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        final String url ="https://jsonplaceholder.typicode.com/posts";
+        final String url ="https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fblog.nisb.in%2Findex.php%2Ffeed%2F";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -210,16 +209,11 @@ public class MainActivity extends AppCompatActivity {
                         ret=(response);
 
                         try{
-                            JSONObject jsonObj = new JSONObject("{\"test\" :" +ret + "}");
-                            JSONArray ja = jsonObj.getJSONArray("test");
-                            String a[] = new String[ja.length()];
+                            JSONObject jsonObj = new JSONObject(ret);
+                            JSONArray ja = jsonObj.getJSONArray("items");
+                            JSONObject a[] = new JSONObject[ja.length()];
                             for (int i =0;i<ja.length();i++){
-                                JSONObject one = ja.getJSONObject(i);
-                                String id = one.getString("id");
-                                String userid = one.getString("userId");
-                                String title = one.getString("title");
-                                String body = one.getString("body");
-                                a[i] = title + "," + userid + "," + id + "," + url + "/" + id;
+                                a[i] = ja.getJSONObject(i);
                             }
 
                             loadBlogPosts(a);

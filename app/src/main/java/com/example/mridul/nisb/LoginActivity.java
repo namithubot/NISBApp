@@ -41,12 +41,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         if (NisbUser.isGuestLogged(getApplicationContext())){
-            System.out.println("Guest Logged in");
+            ToastIt("You are Logged in as Guest");
             Intent i = new Intent(LoginActivity.this,MainActivity.class);
             startActivity(i);
         }
 
         if (NisbUser.isUserLogged(getApplicationContext())){
+            ToastIt("You are Logged in as Guest");
             Intent i = new Intent(LoginActivity.this,MainActivity.class);
             startActivity(i);
         }
@@ -56,14 +57,27 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        Button btnreg = (Button) findViewById(R.id.email_sign_in_button);
-        btnreg.setOnClickListener(new OnClickListener() {
+        String email = ((EditText) findViewById(R.id.email)).getText().toString().trim();
+        String password = ((EditText) findViewById(R.id.password)).getText().toString().trim();
+
+        Button btn_sign_in = (Button) findViewById(R.id.email_sign_in_button);
+        btn_sign_in.setOnClickListener(new OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 String email = ((EditText) findViewById(R.id.email)).getText().toString().trim();
                 String password = ((EditText) findViewById(R.id.password)).getText().toString().trim();
                 loginUser(email,password);
+            }
+        });
 
+        Button btn_register = (Button) findViewById(R.id.email_register_button);
+        btn_register.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = ((EditText) findViewById(R.id.email)).getText().toString().trim();
+                String password = ((EditText) findViewById(R.id.password)).getText().toString().trim();
+                registerUser(email,password);
             }
         });
 
@@ -71,14 +85,15 @@ public class LoginActivity extends AppCompatActivity {
         btnguest.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 NisbUser.doGuestLogin(getApplicationContext());
                 Intent i = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(i);
             }
         });
+
     }
 
+    //add suggestions from mobile
     private void addEmailAutoComplete() {
 
         Account[] accounts = AccountManager.get(this).getAccounts();
@@ -92,6 +107,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void ToastIt(String s){
+        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT);
+    }
+
     public void loginUser(String email,String password){
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -102,8 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(i);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"New User will be created",Toast.LENGTH_SHORT);
-                    registerUser(((EditText)findViewById(R.id.email)).getText().toString(),((EditText)findViewById(R.id.password)).getText().toString());
+                    ToastIt("Could not Log in.");
                 }
             }
         });
@@ -114,16 +132,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //new User has been created
-                Toast.makeText(getApplicationContext(),"New User has been Created",Toast.LENGTH_SHORT).show();
                 if (task.isSuccessful()){
+                    ToastIt("Successfully Registered");
                     loginUser(((EditText)findViewById(R.id.email)).getText().toString(),((EditText)findViewById(R.id.password)).getText().toString());
                 }
-
+                else {
+                    ToastIt("Could not Register with the given credentials");
+                }
             }
         });
     }
 
-
+    //Close if back button pressed
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK)

@@ -30,7 +30,8 @@
                 android:text="Loading..."
                 android:textSize="20dp"
                 android:gravity="center"
-                android:id="@+id/blog_single_title"/>
+                android:id="@+id/blog_single_title"
+                android:layout_marginBottom="30dip"/>
 
             <TextView
                 android:layout_width="match_parent"
