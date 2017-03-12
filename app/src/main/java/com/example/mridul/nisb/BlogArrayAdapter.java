@@ -33,9 +33,11 @@ public class BlogArrayAdapter extends ArrayAdapter<JSONObject>{
         //if (convertView==null)
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_blog_item,parent,false);
 
-        TextView Title = (TextView) convertView.findViewById(R.id.title);
-        TextView Extra = (TextView) convertView.findViewById(R.id.extra);
-        TextView Blog_url = (TextView) convertView.findViewById(R.id.url);
+        TextView Title = (TextView) convertView.findViewById(R.id.blog_adapter_title);
+        TextView Extra = (TextView) convertView.findViewById(R.id.blog_adapter_extra);
+        TextView Content = (TextView) convertView.findViewById(R.id.blog_adapter_content);
+        TextView Author = (TextView) convertView.findViewById(R.id.blog_adapter_author);
+        TextView Date = (TextView) convertView.findViewById(R.id.blog_adapter_date);
 
         try{
             JSONObject one = values[position];
@@ -46,7 +48,9 @@ public class BlogArrayAdapter extends ArrayAdapter<JSONObject>{
 
             Title.setText(title);
             Extra.setText(author + " , " + date);
-            Blog_url.setText(content);
+            Content.setText(content);
+            Author.setText(author);
+            Date.setText(date);
 
         }catch (JSONException j){
 

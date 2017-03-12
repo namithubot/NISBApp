@@ -9,19 +9,30 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Blog Title"
-        android:id="@+id/title">
+        android:textColor="#000"
+        android:id="@+id/blog_adapter_title">
     </TextView>
 
     <TextView
         android:text="Author , Date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/extra"
+        android:id="@+id/blog_adapter_extra"
         android:layout_marginTop="5dp"/>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0dp"
         android:visibility="invisible"
-        android:id="@+id/url"/>
+        android:id="@+id/blog_adapter_content"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        android:id="@+id/blog_adapter_author"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        android:id="@+id/blog_adapter_date"/>
 </LinearLayout>

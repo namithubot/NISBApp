@@ -44,23 +44,20 @@ public class BlogSingleActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         String title = i.getStringExtra("title");
+        String extra = "by " + i.getStringExtra("author") + " on " + i.getStringExtra("date");
         String content = i.getStringExtra("content").replace("<img","<img style=\" width:100%; \"");
+
 
         System.out.println(content);
 
         TextView textView_title = (TextView) findViewById(R.id.blog_single_title);
+        TextView textView_extra = (TextView) findViewById(R.id.blog_single_extra);
 
         textView_title.setText(title);
+        textView_extra.setText(extra);
 
         WebView wv = (WebView) findViewById(R.id.webView);
         wv.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        wv.setWebViewClient(new WebViewClient());
-        wv.getSettings().setJavaScriptEnabled(true);
-        wv.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        wv.getSettings().setPluginState(WebSettings.PluginState.ON);
-        wv.getSettings().setMediaPlaybackRequiresUserGesture(false);
-        wv.setWebChromeClient(new WebChromeClient());
-
         wv.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
 
 

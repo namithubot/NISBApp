@@ -183,12 +183,16 @@ public class MainActivity extends AppCompatActivity {
         main_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView tu = (TextView) view.findViewById(R.id.url);
-                TextView tt = (TextView) view.findViewById(R.id.title);
+                TextView ttitle = (TextView) view.findViewById(R.id.blog_adapter_title);
+                TextView tcontent = (TextView) view.findViewById(R.id.blog_adapter_content);
+                TextView tauthor = (TextView) view.findViewById(R.id.blog_adapter_author);
+                TextView tdate = (TextView) view.findViewById(R.id.blog_adapter_date);
 
                 Intent i=new Intent(getApplicationContext(),BlogSingleActivity.class);
-                i.putExtra("title", tt.getText());
-                i.putExtra("content",tu.getText());
+                i.putExtra("title", ttitle.getText());
+                i.putExtra("content",tcontent.getText());
+                i.putExtra("date",tdate.getText());
+                i.putExtra("author",tauthor.getText());
                 startActivityForResult(i,1);
             }
         });
