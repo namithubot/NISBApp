@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
     public String retriveBlogs(){
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        final String url ="https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fblog.nisb.in%2Findex.php%2Ffeed%2F";
+        final String url ="https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fblog.nisb.in%2Findex.php%2Ffeed%2Frss";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
