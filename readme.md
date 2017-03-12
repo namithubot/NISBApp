@@ -16,12 +16,12 @@ The user messaging requires the device token, so the user's email in hashed form
 2. User Login
 3. Realtime Database connectivity
 4. User / Guest Login and Registration
-5. Blog JSON parsing code, to be updated with real JSON link
+5. Blog
 6. User notification system
+7. Splash Screen
 
 #### To Do
 1. Team
 2. Events
 3. Contact
-4. Static Pages like CS, WIE, FG etc
-5. Event Reminders
+5. Event Reminders through notifications
