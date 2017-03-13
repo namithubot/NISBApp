@@ -19,7 +19,7 @@ public class EventsArrayAdapter extends ArrayAdapter<JSONObject> {
     private final JSONObject[] values;
 
     public EventsArrayAdapter(Context context, JSONObject[] values) {
-        super(context, R.layout.adapter_events, values);
+        super(context, R.layout.adapter_event_item, values);
         this.context = context;
         this.values = values;
     }
@@ -28,32 +28,24 @@ public class EventsArrayAdapter extends ArrayAdapter<JSONObject> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         //if (convertView==null)
-        convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_events,parent,false);
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_event_item,parent,false);
 
-        TextView Title = (TextView) convertView.findViewById(R.id.event_json);
+        TextView Title = (TextView) convertView.findViewById(R.id.event_adapter_title);
+        TextView Eid = (TextView) convertView.findViewById(R.id.event_adapter_id);
 
-        /*try{*/
+        try{
             JSONObject one = values[position];
-            String evJson = String.valueOf(one);
-            /*String author = one.getString("author");
-            String title = one.getString("title");
-            String content = one.getString("content");
+            //String evJson = String.valueOf(one);
+
+            String title = one.getString("name");
+            String eventid = one.getString("id");
 
             Title.setText(title);
-            Extra.setText(author + " , " + date);
-            Content.setText(content);
-            Author.setText(author);
-            Date.setText(date);*/
-            Title.setText(evJson);
+            Eid.setText(eventid);
 
-        /*}catch (JSONException j){
+        }catch (JSONException j){
 
-        }*/
-
-        //0 - Blog Title
-        //1 - Author
-        //2 - Date
-        //3 - Url
+        }
 
         return convertView;
     }

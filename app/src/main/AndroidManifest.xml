@@ -19,7 +19,8 @@
 
         <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
 
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,26 +28,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".BlogSingleActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
 
         <service android:name=".FirebaseInstanceService">
             <intent-filter>
-                <action android:name="com.google.firbase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firbase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
         <service android:name=".MessageService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <!--Facebook ID-->
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/appIDFacebook"/>
+        <!-- Facebook ID -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/appIDFacebook" />
+
+        <activity android:name=".EventSingleActivity"></activity>
     </application>
 
 </manifest>

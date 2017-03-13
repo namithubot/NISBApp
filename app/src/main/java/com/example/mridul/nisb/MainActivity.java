@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
@@ -61,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
         retriveBlogs();
 
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         getEvents();
+
 
     }
 
@@ -185,32 +189,81 @@ public class MainActivity extends AppCompatActivity {
     public void showEvents(JSONObject[] events){
         ListView eventList = (ListView) findViewById(R.id.event_list);
         eventList.setAdapter(new EventsArrayAdapter(this, events));
+
+        eventList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView eventid = (TextView) view.findViewById(R.id.event_adapter_id);
+
+                Intent i=new Intent(getApplicationContext(),EventSingleActivity.class);
+                i.putExtra("eventid",eventid.getText());
+                startActivity(i);
+            }
+        });
     }
 
-    public void getEvents(){
-        Bundle params = new Bundle();
-        params.putString("fields", "id, name, cover");
-        Log.d("Facebook AT" , AccessToken.getCurrentAccessToken().toString());
-        new GraphRequest(AccessToken.getCurrentAccessToken(), "/nieieeestudentbranch/events", params,
-                HttpMethod.GET, new GraphRequest.Callback() {
-            @Override
-            public void onCompleted(GraphResponse response) {
+//    public void getFEvents(){
+//        Bundle params = new Bundle();
+//        params.putString("fields", "id, name, cover");
+//        Log.d("Facebook AT" , String.valueOf(AccessToken.getCurrentAccessToken()));
+//
+//        new GraphRequest(AccessToken.getCurrentAccessToken(), "/nieieeestudentbranch/events", params,
+//                HttpMethod.GET, new GraphRequest.Callback() {
+//            @Override
+//            public void onCompleted(GraphResponse response) {
+//
+//                try {
+//                    Log.d("response from facebook", String.valueOf(response));
+//                    JSONObject eventsJson = response.getJSONObject();
+//                    JSONArray eventsJsonArray = eventsJson.getJSONArray("data");
+//                    JSONObject[] eventsArray = new JSONObject[eventsJsonArray.length()];
+//                    for (int i = 0; i < eventsJsonArray.length(); i++) {
+//                        eventsArray[i] = eventsJsonArray.getJSONObject(i);
+//                    }
+//                    Log.d("Events Array", String.valueOf(eventsArray));
+//                    showEvents(eventsArray);
+//                } catch (JSONException e) {
+//                    Log.d("Facebook Error",e.toString());
+//                }
+//            }
+//        }).executeAsync();
+//    }F
 
-                try {
-                    Log.d("response from facebook", String.valueOf(response));
-                    JSONObject eventsJson = response.getJSONObject();
-                    JSONArray eventsJsonArray = eventsJson.getJSONArray("data");
-                    JSONObject[] eventsArray = new JSONObject[eventsJsonArray.length()];
-                    for (int i = 0; i < eventsJsonArray.length(); i++) {
-                        eventsArray[i] = eventsJsonArray.getJSONObject(i);
+    public void getEvents(){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        final String url ="https://graph.facebook.com/v2.8//nieieeestudentbranch/events?fields=id%2C%20name%2C%20cover%2Cstart_time&format=json&sdk=android&access_token=1327383467301154|YDfQ94wTelbffydG5XrnanHnqu0";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        ret=(response);
+
+                        try{
+                            JSONObject jsonObj = new JSONObject(ret);
+                            JSONArray ja = jsonObj.getJSONArray("data");
+                            JSONObject a[] = new JSONObject[ja.length()];
+                            for (int i =0;i<ja.length();i++){
+                                a[i] = ja.getJSONObject(i);
+                            }
+
+                            showEvents(a);
+                        }
+                        catch (JSONException j){
+
+                        }
+
                     }
-                    Log.d("Events Array", String.valueOf(eventsArray));
-                    showEvents(eventsArray);
-                } catch (JSONException e) {
-                    Log.d("Facebook Error",e.toString());
-                }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
             }
-        }).executeAsync();
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
     }
 
     //Load and Handle Click events
