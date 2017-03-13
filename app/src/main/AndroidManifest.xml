@@ -44,6 +44,9 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
+        <!--Facebook ID-->
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/appIDFacebook"/>
     </application>
 
 </manifest>

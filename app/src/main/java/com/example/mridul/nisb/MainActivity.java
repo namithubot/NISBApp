@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +26,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -166,9 +171,38 @@ public class MainActivity extends AppCompatActivity {
         t.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                if (tabId=="tab_blog")
+                if (tabId.equals("tab_blog"))
                     retriveBlogs();
+                else if(tabId.equals("tab_events"))
+                    getEvents();
 
+            }
+        });
+    }
+
+    public void showEvents(JSONObject[] events){
+        ListView eventList = (ListView) findViewById(R.id.event_list);
+        eventList.setAdapter(new EventsArrayAdapter(this, events));
+    }
+
+    public void getEvents(){
+        Bundle params = new Bundle();
+        params.putString("fields", "id, name, cover");
+        new GraphRequest(AccessToken.getCurrentAccessToken(), "/nieieeestudentbranch/events", params, HttpMethod.GET, new GraphRequest.Callback() {
+            @Override
+            public void onCompleted(GraphResponse response) {
+                try {
+                    Log.d("response from facebook", String.valueOf(response));
+                    JSONObject eventsJson = response.getJSONObject();
+                    JSONArray eventsJsonArray = eventsJson.getJSONArray("data");
+                    JSONObject[] eventsArray = new JSONObject[eventsJsonArray.length()];
+                    for (int i = 0; i < eventsJsonArray.length(); i++) {
+                        eventsArray[i] = eventsJsonArray.getJSONObject(i);
+                    }
+                    Log.d("Events Array", String.valueOf(eventsArray));
+                    showEvents(eventsArray);
+                } catch (JSONException e) {
+                }
             }
         });
     }
