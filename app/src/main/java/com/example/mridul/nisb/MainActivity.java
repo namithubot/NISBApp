@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         retriveBlogs();
 
+        getEvents();
+
     }
 
 
@@ -188,9 +190,12 @@ public class MainActivity extends AppCompatActivity {
     public void getEvents(){
         Bundle params = new Bundle();
         params.putString("fields", "id, name, cover");
-        new GraphRequest(AccessToken.getCurrentAccessToken(), "/nieieeestudentbranch/events", params, HttpMethod.GET, new GraphRequest.Callback() {
+        Log.d("Facebook AT" , AccessToken.getCurrentAccessToken().toString());
+        new GraphRequest(AccessToken.getCurrentAccessToken(), "/nieieeestudentbranch/events", params,
+                HttpMethod.GET, new GraphRequest.Callback() {
             @Override
             public void onCompleted(GraphResponse response) {
+
                 try {
                     Log.d("response from facebook", String.valueOf(response));
                     JSONObject eventsJson = response.getJSONObject();
@@ -202,9 +207,10 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Events Array", String.valueOf(eventsArray));
                     showEvents(eventsArray);
                 } catch (JSONException e) {
+                    Log.d("Facebook Error",e.toString());
                 }
             }
-        });
+        }).executeAsync();
     }
 
     //Load and Handle Click events

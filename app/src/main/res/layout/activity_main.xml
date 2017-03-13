@@ -80,13 +80,11 @@
                 </LinearLayout>
 
 
-                <LinearLayout
+                <include
                     android:id="@+id/tab_events"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
+                    layout="@layout/events_list"/>
 
 
                 <include
