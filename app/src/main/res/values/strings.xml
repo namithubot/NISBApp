@@ -1,19 +1,4 @@
 <resources>
     <string name="app_name">NISB</string>
-    <string name="title_activity_login">Sign in</string>
-
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-    <string name="FBKEY">1327383467301154|YDfQ94wTelbffydG5XrnanHnqu0</string>
-    <string name="appIDFacebook">1327383467301154</string>
+    <string name="nisb_about">NIE IEEE Student Branch provides a platform and opportunties to student members that will help to develop professionally and get identified in their designated fields of interest. In addition to access a range of membership benefits students will be encouraged in building global connections with people who can help you towards your targetted path. Our objective is to bridge the gap between industry and students studying in technology related fields. NIE-IEEE Student Branch was reinitiated in 2008-09. In the year 2012, NIE-IEEE Student branch had 56 IEEE members out of which 5 were Professional members. During 2013 NIE-IEEE Student branch had 70 IEEE members out of which 11 are Professional members. Right now we have more than 200 active IEEE members.</string>
 </resources>

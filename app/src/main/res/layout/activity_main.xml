@@ -1,147 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true"
-    tools:context="com.example.mridul.nisb.MainActivity"
-    >
-
+    tools:context="in.nisb.nisbapp.MainActivity"
+    android:orientation="vertical">
 
 
     <TabHost
-        android:id="@+id/tabhost1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/main_tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical" >
-
-                    <TabWidget
-                        android:id="@android:id/tabs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-            </HorizontalScrollView>
+    <TabWidget
+        android:id="@android:id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#fff"/>
 
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0" >
                 <LinearLayout
-                    android:id="@+id/tab_home"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Welcome to NISB"
-                        android:gravity="center"
-                        android:textSize="20dp"
-                        android:id="@+id/main_textView"/>
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/main_editText"
-                        android:visibility="invisible"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/tab_gallery"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tab1"
                     android:orientation="vertical">
-
                 </LinearLayout>
-
-
-                <include
-                    android:id="@+id/tab_events"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    layout="@layout/events_list"/>
-
-
-                <include
-                    android:id="@+id/tab_blog"
-                    layout="@layout/activity_blog"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </include>
-
-
-                <LinearLayout
-                    android:id="@+id/tab_roadmap"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    layout="@layout/events_list"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/tab_wie"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab_cs"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/tab_fg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/tab_contact"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
             </FrameLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/main_pager"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom" />
         </LinearLayout>
     </TabHost>
 </LinearLayout>
-
