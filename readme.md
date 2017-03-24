@@ -12,7 +12,7 @@
 9.    testCompile 'junit:junit:4.12'
 10.    compile 'com.android.support:cardview-v7:25.2.0'
 
-###Login System
+### Login System
 The nisb.in server is used for login system. The users need to know their email and ieeeno to be able to login. They can logout from the accounts activity which can be accessed from the home screen.
 
 ### Status
