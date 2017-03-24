@@ -34,7 +34,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="You are Logged in as Guest"/>
+                    android:id="@+id/home_user_greet"
+                    android:text="You are Logged in as"/>
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -114,18 +115,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:padding="10dp">
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Know More"
-                        android:layout_marginTop="8dp"
+
+                        android:layout_marginRight="4dp"
                         android:id="@+id/home_about"/>
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Contact Us"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="4dp"
                         android:id="@+id/home_contact"/>
                 </LinearLayout>
 

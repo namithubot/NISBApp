@@ -26,6 +26,14 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_home,container,false);
 
+        TextView gr = (TextView) view.findViewById(R.id.home_user_greet);
+        if (NisbUser.isUserLogged(getContext())==true)
+            gr.setText("You are Logged in as " + NisbUser.getUserName(getContext()));
+        if (NisbUser.isGuestLogged(getContext())==true)
+            gr.setText("You are Logged in as Guest");
+
+
+
         //about button
         Button btn_about = (Button) view.findViewById(R.id.home_about);
         btn_about.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +51,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getContext(),ContactActivity.class);
                 startActivity(i);
+
             }
         });
 
@@ -52,6 +61,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(),AccountActivity.class);
+                startActivity(i);
+            }
+        });
+
+        //Ankura button
+        Button btn_ankura = (Button) view.findViewById(R.id.home_ankura);
+        btn_ankura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(),AnkuraActivity.class);
                 startActivity(i);
             }
         });

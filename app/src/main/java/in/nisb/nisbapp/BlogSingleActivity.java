@@ -1,6 +1,7 @@
 package in.nisb.nisbapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
@@ -13,6 +14,8 @@ public class BlogSingleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_single);
+
+        ExtraFunctions.setSBColor(getWindow(), Color.parseColor("#95a5a6"));
 
         Intent i = getIntent();
         String title = i.getStringExtra("title");

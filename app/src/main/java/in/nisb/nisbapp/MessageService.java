@@ -3,6 +3,7 @@ package in.nisb.nisbapp;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -41,10 +42,20 @@ public class MessageService extends FirebaseMessagingService {
         Log.d("CONTEXT",context);
         eventid = data.get("id");
 
-        Intent intent = new Intent(this, EventSingleActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+        int requestID = (int) System.currentTimeMillis();
+
+        Intent intent = new Intent(this, SplashActivity.class);
+        intent.putExtra("context",context);
+
+        if (context.equals("event-single"))
+            intent.putExtra("id",eventid);
+        if (context.equals("blog-single"))
+            intent.putExtra("url","blog.nisb.in");
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,PendingIntent.FLAG_UPDATE_CURRENT);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, requestID, intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setContentTitle(notification.getTitle())
@@ -56,8 +67,7 @@ public class MessageService extends FirebaseMessagingService {
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
-        NotificationManager notificationManager = (NotificationManager)
-                getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, builder.build());
     }
 }

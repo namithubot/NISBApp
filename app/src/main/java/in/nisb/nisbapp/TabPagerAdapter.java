@@ -34,7 +34,7 @@ class TabPagerAdapter extends FragmentPagerAdapter {
     }
 
     public String getPageTitle(int position){
-        return fragments[position];
+        return "";//fragments[position];
     }
 
     @Override

@@ -1,10 +1,19 @@
 package in.nisb.nisbapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -12,6 +21,25 @@ public class AccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+
+        ExtraFunctions.setSBColor(getWindow(),Color.parseColor("#95a5a6"));
+
+        TextView tvName = (TextView) findViewById(R.id.account_name);
+        TextView tvEmail = (TextView) findViewById(R.id.account_email);
+        TextView tvIeeeno = (TextView) findViewById(R.id.account_ieeeno);
+        TextView tvMobile = (TextView) findViewById(R.id.account_mobile);
+        TextView tvBranch = (TextView) findViewById(R.id.account_branch);
+        CheckBox cbCS = (CheckBox) findViewById(R.id.account_cs);
+
+        try {
+            JSONObject jo = NisbUser.getUserData(getApplicationContext());
+            tvName.setText(jo.getString("name"));
+            tvEmail.setText(jo.getString("emailAddress"));
+            tvIeeeno.setText("" + jo.getInt("ieeeno"));
+            tvMobile.setText(jo.getString("phone"));
+            tvBranch.setText(jo.getString("branch"));
+            cbCS.setChecked(jo.getBoolean("isCS"));
+        }catch (JSONException e){}
 
         Button btn_logout = (Button) findViewById(R.id.account_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {

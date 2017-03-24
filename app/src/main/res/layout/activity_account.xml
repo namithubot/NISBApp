@@ -15,20 +15,148 @@
         android:background="#fff"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="#000"/>
+        android:textColor="#000">
+    </TextView>
 
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Details"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TableRow
+                android:padding="10dp"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Full Name :   "
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mridul Ganga"
+                    android:id="@+id/account_name"/>
+            </TableRow>
+            <TableRow
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IEEE No :   "
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="94082800"
+                    android:id="@+id/account_ieeeno"/>
+            </TableRow>
+
+
+            <TableRow
+                android:background="#fff"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email :   "
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mridul.kepler@gmail.com"
+                    android:id="@+id/account_email"/>
+            </TableRow>
+
+            <TableRow
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile :   "
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9916385511"
+                    android:id="@+id/account_mobile"/>
+            </TableRow>
+
+            <TableRow
+                android:background="#fff"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Branch :   "
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ISE"
+                    android:id="@+id/account_branch"/>
+            </TableRow>
+            <TableRow
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CS Member :   "
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/account_cs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"/>
+            </TableRow>
+        </TableLayout>
+
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Logout"
             android:id="@+id/account_logout"/>
+
+
     </LinearLayout>
+
+</ScrollView>
 
 
 </LinearLayout>

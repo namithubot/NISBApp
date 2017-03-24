@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import org.json.JSONObject;
 
 
 public class NisbUser {
@@ -41,11 +42,11 @@ public class NisbUser {
         }
     }
 
-    public static int doUserLogin(Context c,String email){
+    public static int doUserLogin(Context c,String email,String ieeeno,String wname,String data){
         try{
             SQLiteDatabase db = c.openOrCreateDatabase(database,c.MODE_PRIVATE,null);
-            db.execSQL("create table if not exists user(email text);");
-            db.execSQL("insert into user values('"+ email +"')");
+            db.execSQL("create table if not exists user(email text,ieeeno int,name text,data text);");
+            db.execSQL("insert into user values('"+ email +"',"+ieeeno+",'"+wname+"','"+data+"')");
             db.close();
             setEmail(email);
             return 1;
@@ -72,7 +73,7 @@ public class NisbUser {
     public static boolean isUserLogged(Context c){
         try{
             SQLiteDatabase db = c.openOrCreateDatabase("nisb",c.MODE_PRIVATE,null);
-            db.execSQL("create table if not exists user(email text);");
+            db.execSQL("create table if not exists user(email text,ieeeno int,name text,data text);");
             Cursor rs = db.rawQuery("select * from user",null);
             int num_rows=rs.getCount();
             db.close();
@@ -87,7 +88,7 @@ public class NisbUser {
     public static String getUserEmail(Context c){
         try{
             SQLiteDatabase db = c.openOrCreateDatabase("nisb",c.MODE_PRIVATE,null);
-            db.execSQL("create table if not exists user(email text);");
+            db.execSQL("create table if not exists user(email text,ieeeno int,name text,data text);");
             Cursor rs = db.rawQuery("select * from user",null);
             int num_rows=rs.getCount();
             db.close();
@@ -100,6 +101,58 @@ public class NisbUser {
             return e.getMessage();
         }
         return "Error 2";
+    }
+    public static String getUserName(Context c){
+        try{
+            SQLiteDatabase db = c.openOrCreateDatabase("nisb",c.MODE_PRIVATE,null);
+            db.execSQL("create table if not exists user(email text,ieeeno int,name text,data text);");
+            Cursor rs = db.rawQuery("select * from user",null);
+            int num_rows=rs.getCount();
+            db.close();
+            if (num_rows>0){
+                rs.moveToFirst();
+                String e = rs.getString(2);
+                return e;
+            }
+        }catch (Exception e){
+            return e.getMessage();
+        }
+        return "Error 2";
+    }
+    public static JSONObject getUserData(Context c){
+        try{
+            SQLiteDatabase db = c.openOrCreateDatabase("nisb",c.MODE_PRIVATE,null);
+            db.execSQL("create table if not exists user(email text,ieeeno int,name text,data text);");
+            Cursor rs = db.rawQuery("select * from user",null);
+            int num_rows=rs.getCount();
+            db.close();
+            if (num_rows>0){
+                rs.moveToFirst();
+                String e = rs.getString(3);
+                return new JSONObject(e);
+            }
+        }catch (Exception e){
+            return null;
+        }
+        return null;
+    }
+    public static int getUserIEEEno(Context c){
+        try{
+            SQLiteDatabase db = c.openOrCreateDatabase("nisb",c.MODE_PRIVATE,null);
+            db.execSQL("create table if not exists user(email text,ieeeno int,name text,data text);");
+            Cursor rs = db.rawQuery("select * from user",null);
+            int num_rows=rs.getCount();
+            db.close();
+            if (num_rows>0){
+                rs.moveToFirst();
+                int e = rs.getInt(1);
+                return e;
+            }
+        }catch (Exception e){
+            //return e.getMessage();
+            return 0;
+        }
+        return 0;
     }
 
     public static int doGuestLogout(Context c){

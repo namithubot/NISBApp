@@ -135,7 +135,7 @@ public class BlogFragment extends Fragment {
                 try {
                     tv_title.setText(b[position].getString("title"));
                     tv_extra.setText(b[position].getString("author") + "  " + b[position].getString("pubDate"));
-                    tv_text.setText(Html.fromHtml(b[position].getString("description").substring(0,200)+"..."));
+                    tv_text.setText(Html.fromHtml(b[position].getString("description").substring(0,180)+"..."));
                     tv_content.setText(b[position].getString("content").replace("<img","<img width='100%'"));
 
                 } catch (JSONException e) {

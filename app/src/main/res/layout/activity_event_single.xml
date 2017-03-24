@@ -41,7 +41,15 @@
                 android:background="#fff"
                 android:padding="10dp"
                 android:id="@+id/events_single_text"
+                android:textSize="15dp"
                 />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textStyle="bold"-->
+                <!--android:padding="10dp"-->
+                <!--android:gravity="center"-->
+                <!--android:id="@+id/events_single_attending"/>-->
         </LinearLayout>
     </ScrollView>
 

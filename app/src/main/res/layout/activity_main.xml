@@ -6,45 +6,37 @@
     android:layout_height="match_parent"
     tools:context="in.nisb.nisbapp.MainActivity"
     android:orientation="vertical">
-
-
-    <TabHost
-        android:id="@+id/main_tabhost"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-
-    <TabWidget
-        android:id="@android:id/tabs"
+    <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#fff"/>
+        android:id="@+id/main_tablayout"
+        android:background="#34495e"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorColor="#fff"
+        app:tabTextColor="#fff"
+        app:tabSelectedTextColor="#fff">
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Left" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Center" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right" />
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
 
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0" >
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tab1"
-                    android:orientation="vertical">
-                </LinearLayout>
-            </FrameLayout>
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/main_pager"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom" />
-        </LinearLayout>
-    </TabHost>
 </LinearLayout>
