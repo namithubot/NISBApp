@@ -13,7 +13,7 @@ import android.view.View;
 
 class TabPagerAdapter extends FragmentPagerAdapter {
 
-    private String fragments[] = {"Home","Events","Blog"};
+    private String fragments[] = {"Home","Events","Blog","Notifications"};
 
     public TabPagerAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
         super(supportFragmentManager);
@@ -28,6 +28,8 @@ class TabPagerAdapter extends FragmentPagerAdapter {
                 return new EventFragment();
             case 2:
                 return new BlogFragment();
+            case 3:
+                return new NotificationFragment();
             default:
                 return null;
         }

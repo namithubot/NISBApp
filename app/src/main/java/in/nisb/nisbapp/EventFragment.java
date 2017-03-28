@@ -117,8 +117,9 @@ public class EventFragment extends Fragment {
 
     void getEvents(){
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        final String url ="https://graph.facebook.com/v2.8/nieieeestudentbranch/events?fields=id%2C%20name%2C%20cover%2Cstart_time&format=json&sdk=android&access_token=1327383467301154|YDfQ94wTelbffydG5XrnanHnqu0";
-
+        String fields[] = {"id","name","cover","start_time"};
+        //final String url ="https://graph.facebook.com/v2.8/nieieeestudentbranch/events?fields=id%2C%20name%2C%20cover%2Cstart_time&format=json&sdk=android&access_token=1327383467301154|YDfQ94wTelbffydG5XrnanHnqu0";
+        final  String url = ExtraFunctions.fbUrlGenerator("nieieeestudentbranch/events",fields);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

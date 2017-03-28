@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private ViewPager pager;
 
     private TabLayout tabLayout;
@@ -27,27 +26,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         setupTabs();
-
     }
 
 
     public void setupTabs(){
 
         pager = (ViewPager) findViewById(R.id.main_pager);
-        pager.setAdapter(new TabPagerAdapter(getSupportFragmentManager(),getApplicationContext()));
-
         tabLayout = (TabLayout) findViewById(R.id.main_tablayout);
+
+        pager.setAdapter(new TabPagerAdapter(getSupportFragmentManager(),getApplicationContext()));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setupWithViewPager(pager);
         tabLayout.getTabAt(0).setIcon(R.drawable.nisblogo24);
         tabLayout.getTabAt(1).setText("Events"); //.setIcon(R.drawable.event);
         tabLayout.getTabAt(2).setText("Blog"); //.setIcon(R.drawable.blog);
-
+        tabLayout.getTabAt(3).setIcon(R.drawable.notification);
     }
 
     //Handle back Button
@@ -62,7 +59,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
 
 }

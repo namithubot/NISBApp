@@ -41,8 +41,8 @@ public class EventSingleActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String fields[] = {"name","photos","place","start_time","description","cover"};
         //Toast.makeText(getApplicationContext(),"JOIN OUT" + strjoin("%2C",fields),Toast.LENGTH_SHORT).show();
-        final String url ="https://graph.facebook.com/" + eventid + "?fields="+  strjoin("%2C",fields) +"&access_token=1327383467301154%7CYDfQ94wTelbffydG5XrnanHnqu0";
-
+        //final String url ="https://graph.facebook.com/" + eventid + "?fields="+  strjoin("%2C",fields) +"&access_token=1327383467301154%7CYDfQ94wTelbffydG5XrnanHnqu0";
+        final String url = ExtraFunctions.fbUrlGenerator(eventid,fields);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -97,11 +97,5 @@ public class EventSingleActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-    private String strjoin(String s, String[] fields) {
-        String val="";
-        for (String a : fields){
-            val+=a + "%2C";
-        }
-        return val.substring(0,val.length()-s.length());
-    }
+
 }

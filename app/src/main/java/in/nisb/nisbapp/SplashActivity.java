@@ -17,7 +17,12 @@ public class SplashActivity extends AppCompatActivity {
 
         ExtraFunctions.setSBColor(getWindow(), Color.parseColor("#95a5a6"));
 
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent;
+
+        if (NisbUser.isUserLogged(getApplicationContext()) || NisbUser.isGuestLogged(getApplicationContext()))
+            intent = new Intent(this, MainActivity.class);
+
+        intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
