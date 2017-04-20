@@ -1,7 +1,7 @@
 # NISB Android App
 
 ## Release Signed APK
-[NISB](https://github.com/namithubot/NISBApp/app/app-release.apk)  
+[NISB](https://github.com/namithubot/NISBApp/raw/master/app/app-release.apk)  
 
 ## Libraries used
 1.    compile 'com.android.support:appcompat-v7:25.2.0'
