@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,35 +8,79 @@
     android:orientation="vertical"
     tools:context="in.nisb.nisbapp.ContactActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:padding="10dp"
-        android:text="Contact US"
-        android:gravity="center"
-        android:background="#fff"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:id="@+id/blog_single_title"/>
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:text="Contact US"
+            android:gravity="center"
+            android:background="#fff"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:id="@+id/blog_single_title"/>
 
-<TextView
-    android:layout_marginTop="30dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Address"
-    android:gravity="center"
-    android:textSize="16dp"
-    android:textStyle="bold"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="
 NIE IEEE Students Branch\n
 The National Institute of Engineering, Mysuru\n
 NISB Chairperson\n
 Rajasimha Reddy- +91 89044 55359\n
 in.reddy.r@ieee.org"
-        />
-</LinearLayout>
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contact Form"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="16dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Subject"
+                android:id="@+id/contact_subject"/>
+
+            <EditText
+                android:id="@+id/contact_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Body"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:minHeight="100dp"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Email"
+                android:id="@+id/contact_submit"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</ScrollView>

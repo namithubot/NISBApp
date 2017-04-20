@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -22,7 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +34,7 @@ import org.json.JSONObject;
 public class BlogFragment extends Fragment {
 
     View view;
-
+    SwipeRefreshLayout sr;
     GridView gview;
 
     JSONObject blogs[];
@@ -47,6 +46,14 @@ public class BlogFragment extends Fragment {
 
         gview = (GridView) view.findViewById(R.id.blog_grid);
         getBlogs();
+
+        sr = (SwipeRefreshLayout) view.findViewById(R.id.blog_refresh);
+        sr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getBlogs();
+            }
+        });
 
         gview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -80,6 +87,7 @@ public class BlogFragment extends Fragment {
                                 b[i] = ja.getJSONObject(i);
                             }
                             gview.setAdapter(new BlogFragment.BlogAdapter(view.getContext(),b));
+                            ((SwipeRefreshLayout) view.findViewById(R.id.blog_refresh)).setRefreshing(false);
                         }
                         catch (JSONException j){
                         }

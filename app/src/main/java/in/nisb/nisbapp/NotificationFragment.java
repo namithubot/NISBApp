@@ -2,25 +2,20 @@ package in.nisb.nisbapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.NetworkInterface;
-import java.util.zip.Inflater;
 
 /**
  * Created by mridul on 28/3/17.
@@ -28,7 +23,7 @@ import java.util.zip.Inflater;
 
 public class NotificationFragment extends Fragment {
     View view;
-
+    SwipeRefreshLayout sr;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,6 +35,15 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 NisbUser.clearNotifications(getContext());
+                loadList();
+            }
+        });
+
+
+        sr = (SwipeRefreshLayout) view.findViewById(R.id.notifs_refresh);
+        sr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
                 loadList();
             }
         });
@@ -82,6 +86,7 @@ public class NotificationFragment extends Fragment {
                 }
             }
         });
+        ((SwipeRefreshLayout) view.findViewById(R.id.notifs_refresh)).setRefreshing(false);
 
     }
 

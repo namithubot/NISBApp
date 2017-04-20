@@ -2,13 +2,11 @@ package in.nisb.nisbapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Html;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +15,8 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -44,7 +40,7 @@ public class EventFragment extends Fragment {
 
     GridView gview_all;
     GridView gview_cs;
-
+    SwipeRefreshLayout sr;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,6 +49,21 @@ public class EventFragment extends Fragment {
 
         final TabHost t = (TabHost) view.findViewById(R.id.events_tabhost);
         t.setup();
+
+        sr = (SwipeRefreshLayout) view.findViewById(R.id.events_refresh);
+        sr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadGrids();
+            }
+        });
+        sr = (SwipeRefreshLayout) view.findViewById(R.id.events_refresh2);
+        sr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadGrids();
+            }
+        });
 
         TabHost.TabSpec spec1 = t.newTabSpec("all");
         spec1.setIndicator("All NISB Events");
@@ -135,6 +146,7 @@ public class EventFragment extends Fragment {
                                 b[i] = ja.getJSONObject(i);
                             }
                             gview_all.setAdapter(new EventsAllAdapter(view.getContext(),b));
+                            ((SwipeRefreshLayout) view.findViewById(R.id.events_refresh)).setRefreshing(false);
                         }
                         catch (JSONException j){
                         }
@@ -169,6 +181,7 @@ public class EventFragment extends Fragment {
                                 b[i] = ja.getJSONObject(i);
                             }
                             gview_cs.setAdapter(new EventsAllAdapter(view.getContext(),b));
+                            ((SwipeRefreshLayout) view.findViewById(R.id.events_refresh2)).setRefreshing(false);
                         }
                         catch (JSONException j){
                         }

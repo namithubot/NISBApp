@@ -13,16 +13,22 @@
         android:textColor="#000"
         android:textSize="20dp"
         android:textStyle="bold" />
-
-    <GridView
-        android:id="@+id/blog_grid"
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="180dp"
-        android:horizontalSpacing="0dp"
-        android:numColumns="1"
-        android:verticalSpacing="15dp"
-        android:gravity="center"
-        android:stretchMode="columnWidth">
-    </GridView>
+        android:id="@+id/blog_refresh">
+
+        <GridView
+            android:id="@+id/blog_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="180dp"
+            android:horizontalSpacing="0dp"
+            android:numColumns="1"
+            android:verticalSpacing="15dp"
+            android:gravity="center"
+            android:stretchMode="columnWidth">
+        </GridView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

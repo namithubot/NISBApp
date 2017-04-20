@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TabHost
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,62 +21,74 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:id="@+id/events_all">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="All Events from NISB"
-                            android:gravity="center"
-                            android:background="#fff"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:textColor="#000"/>
-                        <GridView
-                            android:id="@+id/events_all_grid"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:columnWidth="135dp"
-                            android:horizontalSpacing="5dp"
-                            android:numColumns="2"
-                            android:verticalSpacing="15dp"
-                            android:gravity="center"
-                            android:stretchMode="columnWidth">
-                        </GridView>
-                    </LinearLayout>
-
-
-                    <LinearLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/events_all">
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:id="@+id/events_cs">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="Events from Computer Society"
-                            android:gravity="center"
-                            android:background="#fff"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:textColor="#000"/>
-                        <GridView
-                            android:id="@+id/events_cs_grid"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:columnWidth="135dp"
-                            android:horizontalSpacing="5dp"
-                            android:numColumns="2"
-                            android:verticalSpacing="15dp"
-                            android:gravity="center"
-                            android:stretchMode="columnWidth">
-                        </GridView>
-                    </LinearLayout>
+                        android:padding="10dp"
+                        android:text="All Events from NISB"
+                        android:gravity="center"
+                        android:background="#fff"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="#000"/>
+
+                    <android.support.v4.widget.SwipeRefreshLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/events_refresh">
+                    <GridView
+                        android:id="@+id/events_all_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:columnWidth="135dp"
+                        android:horizontalSpacing="5dp"
+                        android:numColumns="2"
+                        android:verticalSpacing="15dp"
+                        android:gravity="center"
+                        android:stretchMode="columnWidth">
+                    </GridView>
+                    </android.support.v4.widget.SwipeRefreshLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/events_cs">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Events from Computer Society"
+                        android:gravity="center"
+                        android:background="#fff"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="#000"/>
+
+                    <android.support.v4.widget.SwipeRefreshLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/events_refresh2">
+                    <GridView
+                        android:id="@+id/events_cs_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:columnWidth="135dp"
+                        android:horizontalSpacing="5dp"
+                        android:numColumns="2"
+                        android:verticalSpacing="15dp"
+                        android:gravity="center"
+                        android:stretchMode="columnWidth">
+                    </GridView>
+                    </android.support.v4.widget.SwipeRefreshLayout>
+                </LinearLayout>
 
             </FrameLayout>
 
@@ -90,4 +101,5 @@
 
         </LinearLayout>
     </TabHost>
+
 </LinearLayout>

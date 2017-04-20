@@ -1,5 +1,8 @@
 # NISB Android App
 
+## Release Signed APK
+[NISB](https://github.com/namithubot/NISBApp/app/app-release.apk)  
+
 ## Libraries used
 1.    compile 'com.android.support:appcompat-v7:25.2.0'
 2.    compile 'com.android.support:design:25.2.0'
@@ -24,8 +27,8 @@ The nisb.in server is used for login system. The users need to know their email 
 5. Events
 6. Blog
 7. Splash Screen
+8. Event Reminders through notifications
 
 #### To Do
-1. Event Reminders through notifications
-2. Ankura and Adroit show when event comes.
-3. Gallery maybe
+1. Ankura and Adroit show when event comes.
+2. Gallery maybe
