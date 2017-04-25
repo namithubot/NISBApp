@@ -16,6 +16,7 @@
         android:gravity="center"
         android:background="#fff"
         android:textColor="#000"
+        android:elevation="3dp"
         android:id="@+id/events_single_title"/>
     <TextView
         android:layout_width="match_parent"
@@ -44,6 +45,12 @@
                 android:id="@+id/events_single_text"
                 android:textSize="15dp"
                 />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:id="@+id/events_register"
+                android:visibility="gone"/>
             
         </LinearLayout>
     </ScrollView>

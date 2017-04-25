@@ -22,6 +22,7 @@
             android:background="#fff"
             android:textColor="#000"
             android:textStyle="bold"
+            android:elevation="3dp"
             android:id="@+id/blog_single_title"/>
 
         <TextView

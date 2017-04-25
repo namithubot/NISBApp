@@ -9,12 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
+        android:elevation="3dp"
         android:gravity="center"
         android:padding="10dp"
         android:text="Welcome to NISB"
+        android:textColor="#000"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="#000"/>
+        android:textStyle="bold" />
     <ScrollView
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">

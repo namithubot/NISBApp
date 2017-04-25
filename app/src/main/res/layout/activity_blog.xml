@@ -12,7 +12,8 @@
         android:text="Latest Blog Posts"
         android:textColor="#000"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:elevation="3dp"/>
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -5,7 +5,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/nisblogo"/>
+            android:src="@drawable/nisbcardback"/>
     </item>
 
 </layer-list>

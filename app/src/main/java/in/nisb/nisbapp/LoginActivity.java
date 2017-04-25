@@ -37,13 +37,15 @@ public class LoginActivity extends AppCompatActivity {
             launchMain();
 
         //signin by authenticating from website
-        Button btn_signin = (Button) findViewById(R.id.login_signin);
+        final Button btn_signin = (Button) findViewById(R.id.login_signin);
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView t_email = (TextView) findViewById(R.id.login_email);
                 TextView t_ieeeno = (TextView) findViewById(R.id.login_ieeeno);
                 authenticateUser(t_email.getText().toString(),t_ieeeno.getText().toString());
+                btn_signin.setText("Loggin in..");
+                btn_signin.setEnabled(false);
                 //Toast.makeText(getApplicationContext(),"Sign IN feature will soon be added.",Toast.LENGTH_SHORT).show();
             }
         });
@@ -75,12 +77,16 @@ public class LoginActivity extends AppCompatActivity {
                             if (jo.getString("success").equals("true")){
                                 String name = jo.getJSONObject("userData").getString("name");
                                 String data = jo.getJSONObject("userData").toString();
-
                                 NisbUser.doUserLogin(getApplicationContext(),email,ieeeno,name,data);
                                 launchMain();
                             }
-                            else
-                            Toast.makeText(getApplicationContext(),"Check the details.",Toast.LENGTH_LONG).show();
+                            else{
+                                Button btn_signin = ((Button) findViewById(R.id.login_signin));
+                                btn_signin.setText("Login");
+                                btn_signin.setEnabled(true);
+                                Toast.makeText(getApplicationContext(),"Check the details.",Toast.LENGTH_LONG).show();
+                            }
+
 
                         }catch(JSONException e){}
 
@@ -89,6 +95,9 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Button btn_signin = ((Button) findViewById(R.id.login_signin));
+                        btn_signin.setText("Login");
+                        btn_signin.setEnabled(true);
                         Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
                     }
                 }){

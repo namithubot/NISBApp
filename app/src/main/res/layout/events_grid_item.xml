@@ -3,30 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/events_adapter_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/nisblogo"
-        android:layout_gravity="center"
-        android:scaleType="centerInside"/>
-
-    <TextView
-        android:id="@+id/events_adapter_title"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:gravity="center"
-        android:textSize="12dp"
-        android:layout_weight="1"
-        android:layout_marginTop="8dp"/>
+        android:layout_margin="20dp"
+        android:elevation="3dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/events_adapter_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nisblogo"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:id="@+id/events_adapter_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:layout_margin="8dp"/>
+
+        </LinearLayout>
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:id="@+id/events_adapter_id"/>
-
+</android.support.v7.widget.CardView>
 </LinearLayout>

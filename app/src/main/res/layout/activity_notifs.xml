@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:elevation="3dp"
         android:gravity="center">
         <TextView
             android:layout_width="0dp"
@@ -18,7 +19,10 @@
             android:text="Notifications"
             android:textColor="#000"
             android:textSize="20dp"
-            android:textStyle="bold" />
+
+            android:textStyle="bold">
+
+        </TextView>
         <TextView
             android:layout_width="wrap_content"
             android:padding="10dp"
@@ -30,7 +34,9 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/notifs_refresh">
+        android:id="@+id/notifs_refresh"
+        android:padding="10dp">
+
         <ListView
             android:id="@+id/notifs_list"
             android:layout_width="match_parent"
